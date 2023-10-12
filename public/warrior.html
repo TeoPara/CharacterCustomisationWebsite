@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>$Title$</title>
+</head>
+<body>
+    <div style="background-color: blanchedalmond; width: 600px">
+    
+    <h3 style="position: absolute; margin-left: 240px">WARRIOR NAME:</h3>
+    <h3 id="index" style="position: absolute; margin-left: 580px; margin-top: 5px">0</h3>
+    <h3 id="hname" style="position: absolute; margin-left: 240px; margin-top: 50px">Alex</h3>
+    
+    <img id="skin" src="img/base.png" style="isolation: isolate; z-index: -99; width: 300px; margin-bottom: -449px">
+    <img id="skinRed" src="img/baseRed.png" style="isolation: isolate; z-index: -99; width: 300px; opacity: 0; margin-bottom: -431px">
+    <img id="skinGreen" src="img/baseGreen.png" style="isolation: isolate; z-index: -99; width: 300px; opacity: 0; margin-bottom: -413px">
+    <img id="skinBlue" src="img/baseBlue.png" style="isolation: isolate; z-index: -99; width: 300px; opacity: 0;">
+    
+    <img id="armor" src="" style="z-index: 5; isolation: isolate; width: 300px; margin-left: -304px">
+    <img id="armorRed" src="img/armorRed.png" style="z-index: 5; isolation: isolate; width: 300px; margin-left: -304px; opacity: 0">
+    <img id="armorGreen" src="img/armorGreen.png" style="z-index: 5; isolation: isolate; width: 300px; margin-left: -304px; opacity: 0">
+    <img id="armorBlue" src="img/armorBlue.png" style="z-index: 5;isolation: isolate;width: 300px; margin-left: -304px; opacity: 0">
+    
+    <img id="pants" src="" style="z-index: 5; isolation: isolate;width: 300px; margin-left: -304px">
+    <img id="pantsRed" src="img/pantsRed.png" style="z-index: 5;isolation: isolate;width: 300px; margin-left: -304px; opacity: 0">
+    <img id="pantsGreen" src="img/pantsGreen.png" style="z-index: 5;isolation: isolate;width: 300px; margin-left: -304px; opacity: 0">
+    <img id="pantsBlue" src="img/pantsBlue.png" style="z-index: 5;isolation: isolate;width: 300px; margin-left: -304px; opacity: 0">
+    
+    <br>
+    <button onclick="document.getElementById('armor').src='img/armor.png'">Enable armor</button>
+    <button onclick="document.getElementById('armor').src=''">Disable armor</button>
+    <br><br>
+    <button onclick="document.getElementById('pants').src='img/pants.png'">Enable pants</button>
+    <button onclick="document.getElementById('pants').src=''">Disable pants</button>
+    <br>
+    
+    <!-- Armor color -->
+    <div style="position: absolute; margin-top: -60%; margin-left: 40% ">
+    <label for="armorR">armor R color:</label><input id="armorR" type="range" min="0" max="100" value="100" step="1" class="slider"><br>
+    <label for="armorG">armor G color:</label><input id="armorG" type="range" min="0" max="100" value="100" step="1" class="slider"><br>
+    <label for="armorB">armor B color:</label><input id="armorB" type="range" min="0" max="100" value="100" step="1" class="slider">
+    </div>
+    
+    <!-- Pants color -->
+    <div style="position: absolute; margin-top: -40%; margin-left: 40% ">
+    <label for="pantsR">pants R color:</label><input id="pantsR" type="range" min="0" max="100" value="100" step="1" class="slider"><br>
+    <label for="pantsG">pants G color:</label><input id="pantsG" type="range" min="0" max="100" value="100" step="1" class="slider"><br>
+    <label for="pantsB">pants B color:</label><input id="pantsB" type="range" min="0" max="100" value="100" step="1" class="slider">
+    </div>
+    
+    <!-- Skin color -->
+    <div style="position: absolute; margin-top: -20%; margin-left: 40% ">
+    <label for="skinR">skin R color:</label><input id="skinR" type="range" min="0" max="100" value="100" step="1" class="slider"><br>
+    <label for="skinG">skin G color:</label><input id="skinG" type="range" min="0" max="100" value="100" step="1" class="slider"><br>
+    <label for="skinB">skin B color:</label><input id="skinB" type="range" min="0" max="100" value="100" step="1" class="slider">
+    </div>
+    
+    <label style="margin-left: 50px" for="name">name:</label>
+    <input id="name">
+    <button onclick="document.getElementById('hname').innerHTML = document.getElementById('name').value">set</button>
+    
+    
+    <script>
+        document.getElementById("armorR").addEventListener("input", (e) => { SliderChanged("armorR", e.target.value); });
+        document.getElementById("armorG").addEventListener("input", (e) => { SliderChanged("armorG", e.target.value); });
+        document.getElementById("armorB").addEventListener("input", (e) => { SliderChanged("armorB", e.target.value); });
+        
+        document.getElementById("skinR").addEventListener("input", (e) => { SliderChanged("skinR", e.target.value); });
+        document.getElementById("skinG").addEventListener("input", (e) => { SliderChanged("skinG", e.target.value); });
+        document.getElementById("skinB").addEventListener("input", (e) => { SliderChanged("skinB", e.target.value); });
+        
+        document.getElementById("pantsR").addEventListener("input", (e) => { SliderChanged("pantsR", e.target.value); });
+        document.getElementById("pantsG").addEventListener("input", (e) => { SliderChanged("pantsG", e.target.value); });
+        document.getElementById("pantsB").addEventListener("input", (e) => { SliderChanged("pantsB", e.target.value); });
+        
+        function SliderChanged(which, value)
+        {
+          if (which == "armorR" || which == "armorG" || which == "armorB")
+          {
+            document.getElementById("armorRed").style.opacity = document.getElementById("armorR").value / 200;
+            document.getElementById("armorGreen").style.opacity = document.getElementById("armorG").value / 200;
+            document.getElementById("armorBlue").style.opacity = document.getElementById("armorB").value / 200;
+          }
+          if (which == "skinR" || which == "skinG" || which == "skinB")
+          {
+            document.getElementById("skinRed").style.opacity = document.getElementById("skinR").value / 200;
+            document.getElementById("skinGreen").style.opacity = document.getElementById("skinG").value / 200;
+            document.getElementById("skinBlue").style.opacity = document.getElementById("skinB").value / 200;
+          }
+          if (which == "pantsR" || which == "pantsG" || which == "pantsB")
+          {
+              document.getElementById("pantsRed").style.opacity = document.getElementById("pantsR").value / 200;
+              document.getElementById("pantsGreen").style.opacity = document.getElementById("pantsG").value / 200;
+              document.getElementById("pantsBlue").style.opacity = document.getElementById("pantsB").value / 200;
+          }
+        }
+        function componentToHex(c) {
+          var hex = c.toString(16);
+          return hex.length == 1 ? "0" + hex : hex;
+        }
+        function rgbToHex(r, g, b) {
+          return "#" + componentToHex(r) + componentToHex(g) + componentToHex(b);
+        }
+    </script>
+    
+    <!--Update-->
+    <button style="margin-left:45px" onclick="
+    parent.update(
+    [
+        Number(document.getElementById('index').innerHTML),   /* Index */
+        String(document.getElementById('hname').innerHTML),   /* Name */
+        Boolean(!(String(document.getElementById('armor').getAttribute('src')) === '')), /* Armor */
+        Boolean(!(String(document.getElementById('pants').getAttribute('src')) === '')),  /* Pants */
+        [
+           [
+                Number(document.getElementById('armorR').value / 200), /* Armor R*/
+                Number(document.getElementById('armorG').value / 200), /* Armor G*/
+                Number(document.getElementById('armorB').value / 200), /* Armor B*/
+           ],
+           [
+                Number(document.getElementById('pantsR').value / 200), /* Pants R*/
+                Number(document.getElementById('pantsG').value / 200), /* Pants G*/
+                Number(document.getElementById('pantsB').value / 200), /* Pants B*/
+           ],
+           [
+                Number(document.getElementById('skinR').value / 200), /* Skin R*/
+                Number(document.getElementById('skinG').value / 200), /* Skin G*/
+                Number(document.getElementById('skinB').value / 200), /* Skin B*/
+           ]
+        ]
+    ])">Update</button>
+    
+    </div>
+</body>
+</html>
